@@ -2,6 +2,6 @@ package letter;
 
 public interface Content {
 
-	public abstract int getCost();
+	public abstract double getCost();
 	
 }

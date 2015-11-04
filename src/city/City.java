@@ -11,19 +11,27 @@ public class City {
 	
 	private List<Letter<?>> letters;
 	
+	private Bank bank;
+	
 	public City(String name){
 		this.townName = name;
 		this.letters = new ArrayList<Letter<?>>();
+		this.bank = Bank.getInstance();
 	}
 	
 	public void sendLetter(Letter<?> letter){
 		letters.add(letter);
+		bank.debit(letter.getSender().getAccount(),letter.getContent().getCost());
 	}
 	
 	public void distributeLetters(){
 		for(Letter<?> l : letters){
 			l.getReceiver().receiveLetter(l);
 		}
+	}
+	
+	public Bank getBank(){
+		return bank;
 	}
 	
 	@Override

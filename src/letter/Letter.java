@@ -1,6 +1,6 @@
 package letter;
 
-import town.Inhabitant;
+import city.Inhabitant;
 
 public class Letter<L extends Content> {
 
