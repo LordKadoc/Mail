@@ -24,10 +24,13 @@ public class Bank {
 	public void credit(long accountID, double amount){
 		double d = accounts.get(accountID);
 		accounts.replace(accountID, d+amount);
+		System.out.println("Credit " + amount + " to account " + accountID + ", total : " + accounts.get(accountID) );
 	}
 	
 	public void debit(long accountID, double amount){
-		credit(accountID,-amount);
+		double d = accounts.get(accountID);
+		accounts.replace(accountID, d-amount);
+		System.out.println("Dedit " + amount + " from account " + accountID + ", total : " + accounts.get(accountID) );
 	}
 	
 	public void addAccount(Inhabitant i){

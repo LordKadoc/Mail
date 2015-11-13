@@ -29,7 +29,7 @@ public class Inhabitant {
 	}
 	
 	public void receiveLetter(Letter<?> letter){
-		//TODO
+		letter.openLetter();
 	}
 	
 	@Override

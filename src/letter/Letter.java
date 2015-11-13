@@ -1,14 +1,19 @@
 package letter;
 
 import city.Inhabitant;
+import content.Content;
+import factory.ILetterFactory;
+import factory.LetterFactory;
 
-public class Letter<L extends Content> {
+public abstract class Letter<L extends Content> implements Content{
+	
+	protected static ILetterFactory factory = new LetterFactory();
 
-	private L content;
+	protected L content;
 	
-	private Inhabitant sender;
+	protected Inhabitant sender;
 	
-	private Inhabitant receiver;
+	protected Inhabitant receiver;
 	
 	public Letter(L content, Inhabitant sender, Inhabitant receiver){
 		this.content = content;
@@ -16,6 +21,8 @@ public class Letter<L extends Content> {
 		this.receiver = receiver;
 	}
 
+	public abstract void openLetter();
+		
 	public L getContent() {
 		return content;
 	}
@@ -27,5 +34,4 @@ public class Letter<L extends Content> {
 	public Inhabitant getReceiver() {
 		return receiver;
 	}
-	
 }

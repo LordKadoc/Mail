@@ -1,4 +1,4 @@
-package letter;
+package content;
 
 public interface Content {
 
