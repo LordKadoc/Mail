@@ -12,12 +12,13 @@ public class Text implements Content{
 
 	@Override
 	public double getCost() {
-		return 3.50;
+		return 1;
+	}
+
+	@Override
+	public String getDescription() {
+		return "a text content (" + text + ")";
 	}
 	
-	@Override
-	public String toString(){
-		return text;
-	}
 
 }

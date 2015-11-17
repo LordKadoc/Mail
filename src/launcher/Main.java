@@ -1,28 +1,42 @@
 package launcher;
 
-import content.Money;
-import content.Text;
-import letter.PromisoryNote;
-import letter.SimpleLetter;
-import city.Bank;
+import generator.NotEnoughInhabitantException;
+import generator.RandomMailGenerator;
 import city.City;
 import city.Inhabitant;
-import factory.LetterFactory;
 
 public class Main {
 
 	public static void main(String[] args) {
-		City pawnee = new City("Pawnee");
-		Inhabitant bob = new Inhabitant("Bob", pawnee, 1972, 974, true);
-		Inhabitant bobetta = new Inhabitant("Bobetta", pawnee, 1980, 95, false);
-		Bank bank = pawnee.getBank();
-		bank.addAccount(bob);
-		bank.addAccount(bobetta);
-		//bob.sendLetter(new SimpleLetter(new Text("pd"), bob, bobetta));
-		//bobetta.sendLetter(new PromisoryNote(new Money(100.0), bob, bobetta));
-		//bobetta.sendLetter(new LetterFactory().createBodyPartNote(15.0, " pair of dog's testicules", "Je t'avais bien dit de castrer ton sale clébard !", bobetta, bob));
-		bobetta.sendLetter(new LetterFactory().createSimpleLetter("Coucou", bobetta, bob).registered().urgent());
-		pawnee.distributeLetters();
+		
+		City city =  new City("Pawnee");
+		
+		System.out.println("Creating the city of " + city.toString());
+		
+		for(int i=0;i<100;i++){
+			city.addInhabitant(new Inhabitant("inhabitant-"+(i+1), city));
+		}
+		System.out.println("Generating 100 inhabitants");
+		
+		RandomMailGenerator generator = new RandomMailGenerator(-1);
+		
+		System.out.println("Mailing letters for 10 days");
+		
+		for(int i=0;i<10;i++){
+			
+			System.out.println("*******************************************");
+			System.out.println("Day " + (i+1));
+			city.distributeLetters();
+			try {
+				generator.generateLettersForTheDay(city);
+			} catch (NotEnoughInhabitantException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		System.out.println(" ******************** Bank account resume ***********************");
+		city.getBank().displayAccount();
+		
 	}
 
 }

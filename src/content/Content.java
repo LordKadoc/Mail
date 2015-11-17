@@ -2,6 +2,8 @@ package content;
 
 public interface Content {
 
-	public abstract double getCost();
+	public double getCost();
+	
+	public String getDescription();
 	
 }

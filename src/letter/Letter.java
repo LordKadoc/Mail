@@ -2,13 +2,9 @@ package letter;
 
 import city.Inhabitant;
 import content.Content;
-import factory.ILetterFactory;
-import factory.LetterFactory;
 
 public abstract class Letter<L extends Content> implements Content{
 	
-	protected static ILetterFactory factory = new LetterFactory();
-
 	protected L content;
 	
 	protected Inhabitant sender;
@@ -34,4 +30,5 @@ public abstract class Letter<L extends Content> implements Content{
 	public Inhabitant getReceiver() {
 		return receiver;
 	}
+	
 }
