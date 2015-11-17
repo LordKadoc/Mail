@@ -1,0 +1,14 @@
+left-hand 
+right-hand
+finger
+thumb
+right leg
+left leg
+ear
+nose
+eyeball
+testicle
+nail
+lips
+boob
+Remy-head
