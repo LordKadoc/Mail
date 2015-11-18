@@ -6,6 +6,11 @@ public class Text implements Content{
 	
 	private String text;
 	
+	/**
+	 * Creates a new Text content.
+	 * 
+	 * @param text the text of the letter.
+	 */
 	public Text(String text){
 		this.text = text;
 	}
