@@ -1,3 +1,4 @@
+package main;
 import launcher.Main;
 
 import org.junit.Test;
